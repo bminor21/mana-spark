@@ -2,13 +2,16 @@
   "name": "node",
   "version": "1.0.0",
   "description": "test app",
-  "main": "main.js",
+  "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node index.js"
   },
   "author": "Brett",
   "license": "ISC",
   "dependencies": {
     "express": "^4.14.0"
+  },
+  "engines": {
+    "node": "5.9.1"
   }
 }
