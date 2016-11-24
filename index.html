@@ -3,7 +3,7 @@
 
 <!-- HEAD -->
 <head>
-<title>Veltorak - Home</title>
+<title>Veltorak.io</title>
 <link rel="stylesheet" type="text/css" href="index.css"/>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.js"></script>
@@ -15,15 +15,15 @@
 
 <!-- BODY START -->
 <body>
-<div ng-app="myApp">
+<div ng-app="myApp" ng-controller="homeCtrl">
 	<div class="header card">
-		<h1 id="main">Veltorak's Projects</h1>
+		<h1 id="main"> {{ siteName }} </h1>
 	</div>
 	
-	<div class="NavBar">
-		<a href="#home" class="navButton">Home</a>
-		<a href="#projects" class="navButton">Projects</a>
-		<a href="#about" class="navButton">About</a>
+	<div class="NavBar card" >
+		<span ng-repeat="x in navigationItems">
+			<a href="{{x.link}}" class="navButton"> {{ x.display }} </a>
+		</span>
 	</div>
 	
 	<div class="mainView card" ng-view></div>
