@@ -1,2 +1,7 @@
-<h2>About Me</h2>
-<p>Coming soon!</p>
+<div ng-controller="aboutCtrl">
+<ng-repeat ng-repeat="i in aboutMe">
+<div class="question"> <p>{{ i.question }} </p></div>
+<div class="answer"><p> {{ i.answer }} </p></div>
+</br>
+</ng-repeat>
+</div>
