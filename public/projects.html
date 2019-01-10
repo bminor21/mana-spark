@@ -1,3 +1,98 @@
-<h2>Projects</h2>
-<p>This section is coming soon.</p>
-<p> In the meantime, checkout my <a href="https://github.com/bminor21">Github account.</a></p>
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+  <title>Veltorak.io</title>
+
+  <style>
+    img{width:100%;}
+
+    .bd-placeholder-img {
+      font-size: 1.125rem;
+      text-anchor: middle;
+    }
+
+    @media (min-width: 768px) {
+      .bd-placeholder-img-lg {
+        font-size: 3.5rem;
+      }
+    }
+  </style>
+
+</head>
+<body>
+
+  <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+    <a class="navbar-brand" href="#">Veltorak.io</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="..\index.html">Home</a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="projects.html">Projects<span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="about.html">About</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+<main role="main">
+  <div class="album py-5 bg-light">
+    <div class="container" style="padding-top: 50px;">
+      <div class="row" id="projects">
+      </div>
+    </div>
+  </div>
+</main>
+
+  <script>
+    window.onload = function(e){
+      e.preventDefault();
+      var xhttp = new XMLHttpRequest();
+      xhttp.onreadystatechange = function() {
+        if( xhttp.readyState == 4 && xhttp.status == 200 ){
+          var repos = JSON.parse( xhttp.responseText );
+          for( var repo in repos ){
+            var obj = repos[repo];
+            createCard( obj.html_url, obj.name, obj.language, obj.description );
+            console.log(obj);
+          }
+        }
+      }
+        xhttp.open('GET', "https://api.github.com/users/bminor21/repos", true);
+        xhttp.send();
+    };
+
+    function createCard( url, name, language, description ){
+      $('#projects').append(`
+        <div class="col-md-4">
+          <div class="card mb-4 shadow-sm">
+            <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail"><title>Placeholder</title><rect fill="#55595c" width="100%" height="100%"/><text fill="#eceeef" dy=".3em" x="50%" y="50%">`+ name + `</text></svg>
+            <div class="card-body">
+              <p class="card-text"> ` + description + `</p>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                  <button type="button" class="btn btn-sm btn-outline-secondary" onclick="location.href='` + url + `'">View Repo</button>
+                </div>
+                <small class="text-muted">` + language + `</small>
+              </div>
+            </div>
+          </div>
+        </div>
+      `);
+    }
+  </script>
+</body>
+</html>

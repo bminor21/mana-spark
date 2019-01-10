@@ -5,8 +5,13 @@
 <head>
 <title>Veltorak.io</title>
 <link rel="stylesheet" type="text/css" href="index.css"/>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+<link href="/docs/4.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.js"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
 </head>
 
 <!-- SCRIPTS GO HEREE -->
@@ -15,19 +20,44 @@
 
 <!-- BODY START -->
 <body>
-<div ng-app="myApp" ng-controller="homeCtrl">
-	<div class="header card">
-		<h1 id="main"> {{ siteName }} </h1>
+	<div ng-app="myApp" ng-controller="homeCtrl">
+		<nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+		  <a class="navbar-brand" href="#"> {{ siteName }}</a>
+		  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+		    <span class="navbar-toggler-icon"></span>
+		  </button>
+
+		  <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+		    <ul class="navbar-nav mr-auto">
+		      <li class="nav-item active">
+		        <a class="nav-link" href="#home">Home <span class="sr-only">(current)</span></a>
+		      </li>
+		      <li class="nav-item">
+		        <a class="nav-link" href="public/projects.html">Projects</a>
+		      </li>
+					<li class="nav-item">
+						<a class="nav-link" href="public/about.html">About</a>
+					</li>
+		    </ul>
+		  </div>
+		</nav>
+		<div class="mainView card" style="padding-top: 50px;">
+
+			<section class="jumbotron text-center">
+			 <div class="container">
+				 <h1 class="jumbotron-heading">Welcome</h1>
+				 <p class="lead text-muted">
+					 This site is a personal website, built as a means for me to learn AngularJS and to learn web development.
+				 	 I will also be hosting multiple projects of mine on this webserver. For more info, see the projects page.
+					 <!--
+					 <a href="#" class="btn btn-primary my-2">Main call to action</a>
+					 <a href="#" class="btn btn-secondary my-2">Secondary action</a>
+				 -->
+				 </p>
+			 </div>
+		 </section>
+		</div>
 	</div>
-	
-	<div class="NavBar card" >
-		<span ng-repeat="x in navigationItems">
-			<a href="{{x.link}}" class="navButton"> {{ x.display }} </a>
-		</span>
-	</div>
-	
-	<div class="mainView card" ng-view></div>
-</div>
 </body>
 
 </html>
